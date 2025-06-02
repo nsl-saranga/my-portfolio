@@ -335,19 +335,35 @@
                 margin: 0 5px;
             }
             
+            /* Hide carousel controls on mobile */
             .carousel-control-prev, 
             .carousel-control-next {
-                width: 35px;
-                height: 35px;
-                font-size: 14px;
+                display: none !important;
             }
             
-            .carousel-control-prev {
-                left: 10px;
+            /* Stack carousel items vertically on mobile */
+            .carousel-inner .carousel-item {
+                display: block !important;
+                position: static !important;
+                transform: none !important;
             }
             
-            .carousel-control-next {
-                right: 10px;
+            .carousel-inner .carousel-item.active {
+                display: block !important;
+            }
+            
+            .carousel-inner .carousel-item:not(.active) {
+                display: block !important;
+                opacity: 1 !important;
+            }
+            
+            /* Disable carousel functionality on mobile */
+            .carousel {
+                pointer-events: none;
+            }
+            
+            .carousel .carousel-inner {
+                pointer-events: auto;
             }
             
             .education-icon {
@@ -388,14 +404,30 @@
                 text-align: center;
             }
             
+            /* Center align about section content on mobile */
             .lead-about {
                 font-size: 1rem;
-                text-align: left;
+                text-align: center;
             }
             
-            .about-p, .publication-abstract {
+            .about-p {
                 font-size: 0.95rem;
                 line-height: 1.6;
+                text-align: center;
+            }
+            
+            /* Center align publication content on mobile */
+            .publication-abstract {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                text-align: center;
+            }
+            
+            /* Center align publication buttons */
+            .btn-pdf {
+                display: block;
+                margin: 10px auto;
+                text-align: center;
             }
             
             /* Better card spacing on mobile */
@@ -427,18 +459,35 @@
                 padding: 50px 0;
             }
             
+            /* Hide carousel controls on tablet as well */
             .carousel-control-prev, 
             .carousel-control-next {
-                width: 40px;
-                height: 40px;
+                display: none !important;
             }
             
-            .carousel-control-prev {
-                left: 15px;
+            /* Stack carousel items vertically on tablet */
+            .carousel-inner .carousel-item {
+                display: block !important;
+                position: static !important;
+                transform: none !important;
             }
             
-            .carousel-control-next {
-                right: 15px;
+            .carousel-inner .carousel-item.active {
+                display: block !important;
+            }
+            
+            .carousel-inner .carousel-item:not(.active) {
+                display: block !important;
+                opacity: 1 !important;
+            }
+            
+            /* Disable carousel functionality on tablet */
+            .carousel {
+                pointer-events: none;
+            }
+            
+            .carousel .carousel-inner {
+                pointer-events: auto;
             }
             
             .col-lg-6 {
@@ -464,9 +513,22 @@
                 font-size: 1.2rem;
             }
             
+            /* Center align content on tablet as well */
+            .lead-about {
+                text-align: center;
+            }
+            
             .about-p, .publication-abstract {
-                text-align: left;
+                text-align: center;
                 line-height: 1.7;
+            }
+            
+            /* Center align publication buttons on tablet */
+            .btn-pdf {
+                display: block;
+                margin: 10px auto;
+                text-align: center;
+                width: auto;
             }
         }
         
@@ -911,6 +973,7 @@
         
         // Form validation
         const contactForm = document.getElementById('contactForm');
+        
         
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
