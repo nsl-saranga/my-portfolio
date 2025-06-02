@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nisal Liyanage| Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --secondary: #10B981;
+            --dark: #1E293B;
+            --light: #F8FAFC;
+            --gray: #94A3B8;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            scroll-behavior: smooth;
+        }
+        
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            padding: 140px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.15) 0%, transparent 20%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin: 0 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .skill-badge {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 8px;
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .bg-indigo {
+            background-color: #6610f2 !important; /* Bootstrap 5's $indigo */
+            color: white;
+        }
+        .bg-teal {
+            background-color: #20c997 !important; /* Bootstrap’s teal color */
+            color: white;
+        }
+
+        .lead-about{
+            text-align: left;
+        }
+        .lead{
+            text-align: center;
+        }
+        .publication-abstract{
+            text-align: justify;
+           
+        
+        }
+        .about-p{
+            text-align: justify;
+        }
+        .education-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .education-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .carousel-control-prev, 
+        .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(79, 70, 229, 0.8);
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 1;
+        }
+        
+        .carousel-control-prev {
+            left: 20px;
+        }
+        
+        .carousel-control-next {
+            right: 20px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card .card-body {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-card .card-body .mt-3 {
+            margin-top: auto !important;
+        }
+                 
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .col-lg-6{
+            padding: 17px;
+        }
+        .contact-form .form-control {
+            border-radius: 8px;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #4338CA;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 30px 0;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        .publication-video {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+                /* PDF button styling */
+        .btn-pdf {
+            background: #dc3545;
+            border: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-pdf:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+            color: white;
+        }
+
+        .btn-pdf i {
+            margin-right: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .carousel-control-prev, 
+            .carousel-control-next {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 hero-content">
+                    <h1 class="display-4 fw-bold mb-3">Nisal Saranga Liyanage</h1>
+                    <p class="lead-about mb-4">Machine Learning Engineer, Full Stack Developer & IOT Researcher</p>
+                    <p class="mb-4">Building intelligent systems to solve real-world problems. Passionate about AI, IoT, and creating impactful technology solutions.</p>
+                    <div class="social-links mb-4">
+                        <a href="https://github.com/nsl-saranga"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/nisal-liyanage-3a1a60295/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/@FinnCollinsTech"><i class="fab fa-youtube"></i></a>
+                        <a href="https://stackoverflow.com/users/25348561/nisal-liyanage"><i class="fab fa-stack-overflow"></i></a>
+                    </div>
+                    <a href="#contact" class="btn btn-light btn-lg px-4 py-2">Get in Touch</a>
+                </div>
+                <div class="col-md-6 text-center mt-5 mt-md-0">
+                    <img src="assets/nisal.jpg" alt="Nisal Liyanage" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4 p-md-5">
+                            <p class="lead">Hello! I'm Nisal, a passionate technologist with a strong interest in IOT, artificial intelligence and full-stack development</p>
+                            
+                            <p class="about-p">I am a passionate technologist who recently completed a BSc (Hons) in Computer Science at Plymouth University, UK, through a collaborative program with NSBM Green University in Sri Lanka. My academic journey has equipped me with a strong foundation in computer science, and I am constantly driven by curiosity and a desire to explore the limitless potential of technology.</p>
+                            
+                            <p class="about-p">My primary interests lie in the fields of the Internet of Things (IoT) and Artificial Intelligence, particularly in areas such as machine learning, deep learning, computer vision, and natural language processing. I am deeply motivated to apply emerging technologies and advanced algorithms to solve complex, real-world challenges.</p>
+                            
+                            <p class="about-p">In addition to my passion for intelligent systems, I have hands-on experience in full-stack development, covering both web and mobile application development. I also have a strong command of database management, data analytics, and data visualization. With fluency in English and a commitment to continuous learning, I am enthusiastic about collaborating on projects that push the boundaries of innovation and technology.</p>
+                            
+                            <div class="mt-4">
+                                <h5>Career Goals:</h5>
+                                <ul>
+                                    <li>Develop Innovative IoT Solutions</li>
+                                    <li>Advance in Artificial Intelligence Research</li>
+                                    <li>Build Scalable Full-Stack Applications</li>
+                                    <li>Pursue Advanced Technical Knowledge</li>
+                                    <li>Collaborate on Innovative Projects</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="text-center">
+          <div class="mb-5">
+            <!-- Programming Languages -->
+            <span class="skill-badge bg-primary text-white"><i class="fab fa-python me-2"></i>Python</span>
+            <span class="skill-badge bg-dark text-white"><i class="fas fa-code me-2"></i>C++</span>
+            <span class="skill-badge bg-secondary text-white"><i class="fas fa-code me-2"></i>C#</span>
+            <span class="skill-badge bg-info text-white"><i class="fab fa-js me-2"></i>JavaScript</span>
+            <span class="skill-badge bg-indigo text-white"><i class="fab fa-js me-2"></i>Dart</span>
+            <span class="skill-badge bg-warning text-dark"><i class="fas fa-database me-2"></i>SQL</span>
+            
+
+            <!-- Frameworks, Libraries & Tools -->
+            <span class="skill-badge bg-success text-white"><i class="fas fa-brain me-2"></i>TensorFlow</span>
+            <span class="skill-badge bg-teal text-white"><i class="fas fa-robot me-2"></i>PyTorch</span>
+            <span class="skill-badge bg-info text-white"><i class="fas fa-brain me-2"></i>Keras</span>
+            <span class="skill-badge bg-secondary text-white"><i class="fas fa-database me-2"></i>MySQL</span>
+            <span class="skill-badge bg-danger text-white"><i class="fas fa-microchip me-2"></i>ESP32</span>
+            <span class="skill-badge bg-dark text-white"><i class="fab fa-node-js me-2"></i>Node.js</span>
+            <span class="skill-badge bg-warning text-dark"><i class="fab fa-react me-2"></i>React</span>
+            <span class="skill-badge bg-secondary text-white"><i class="fas fa-database me-2"></i>MongoDB</span>
+            <span class="skill-badge bg-secondary text-white"><i class="fas fa-database me-2"></i>Firebase</span>
+            <span class="skill-badge bg-success text-white"><i class="fas fa-server me-2"></i>Flask</span>
+            <span class="skill-badge bg-primary text-white"><i class="fas fa-server me-2"></i>Express</span>
+            <span class="skill-badge bg-dark text-white"><i class="fas fa-chart-line me-2"></i>Scikit-learn</span>
+            <span class="skill-badge bg-info text-white"><i class="fas fa-table me-2"></i>Pandas</span>
+            <span class="skill-badge bg-warning text-dark"><i class="fas fa-calculator me-2"></i>NumPy</span>
+            <span class="skill-badge bg-primary text-white"><i class="fas fa-book me-2"></i>Jupyter</span>
+            <span class="skill-badge bg-dark text-white"><i class="fas fa-code-branch me-2"></i>Git & GitHub</span>
+            <span class="skill-badge bg-indigo text-white"><i class="fas fa-mobile-alt me-2"></i>Flutter</span>
+            <span class="skill-badge bg-info text-white"><i class="fab fa-html5 me-2"></i>HTML & CSS</span>
+            <span class="skill-badge bg-teal text-white"><i class="fas fa-snowflake me-2"></i>Snowflake</span>
+            <span class="skill-badge bg-success text-white"><i class="fas fa-code me-2"></i>Arduino</span>
+            <span class="skill-badge bg-dark text-white"><i class="fas fa-laptop-code me-2"></i>RStudio</span>
+            <span class="skill-badge bg-secondary text-white"><i class="fas fa-database me-2"></i>SQL Server</span>
+        </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="education-card">
+                        <div class="card-body p-4">
+                            <div class="education-icon mx-auto">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h4 class="text-center">BSc Computer Science</h4>
+                            <h5 class="text-center text-primary">Plymouth University</h5>
+                            <p class="text-center text-muted">2021-2025</p>
+                            <p class="text-center mt-3">Specialized in Artificial Intelligence, IOT and Full Stack Development. Thesis on "A Sensor-Based System for Advanced Beehive Monitoring that utilizes Signal Processing with Artificial Intelligence".</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="education-card">
+                        <div class="card-body p-4">
+                            <div class="education-icon mx-auto">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <h4 class="text-center">School Education</h4>
+                            <h5 class="text-center text-primary">St. Joseph's College, Negombo</h5>
+                            <p class="text-center text-muted">2007-2021</p>
+                            <p class="text-center mt-3">Successfully completed both GCE A/L and O/L examinations with good results. Followed the A/L in the Mathematics stream (Physical Science).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Publications</h2>
+            <div id="publicationsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 mb-4 mb-lg-0">
+                                <div class="publication-video">
+                                    <video controls poster="assets/certificate.jpg" class="w-100">
+                                        <source src="#" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h3>IOT Based Smart Beehive Monitoring System</h3>
+                                <p class="text-muted">IEEE 6th International Conference on Advancements in Computing (ICAC) • 2024</p>
+                                <p class="publication-abstract">This paper presents a novel IoT-based framework for real-time beehive monitoring tailored to the Sri Lankan beekeeping industry. By integrating environmental sensors and a web-based interface, the system enhances hive management by enabling remote tracking of temperature, humidity, weight, and feeding needs.</p>
+                                <p class="publication-abstract">Initial results demonstrate significant potential to reduce manual labor and improve hive productivity, laying the foundation for scalable smart agriculture solutions.</p>
+                                <a href="assets/IoT-Based_Smart_Beehive_Monitoring_System.pdf" target="_blank" class="btn btn-pdf mt-2">
+                                    <i class="fas fa-file-pdf"></i>Read Full Paper
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="carousel-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 mb-4 mb-lg-0">
+                                <div class="publication-video">
+                                    <video controls poster="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" class="w-100">
+                                        <source src="#" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h3>Real-time Anomaly Detection in Sensor Networks</h3>
+                                <p class="text-muted">ACM Transactions on Sensor Networks • 2021</p>
+                                <p>We introduce a lightweight anomaly detection algorithm that processes sensor data at the edge, reducing cloud dependency and latency. The system achieved 99.4% accuracy in industrial equipment monitoring scenarios.</p>
+                                <p>Our hybrid approach combines traditional signal processing with machine learning, making it suitable for deployment on microcontrollers with limited computational resources.</p>
+                                <a href="#" class="btn btn-outline-primary mt-2">Read Full Paper</a>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="carousel-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 mb-4 mb-lg-0">
+                                <div class="publication-video">
+                                    <video controls poster="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" class="w-100">
+                                        <source src="#" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h3>Federated Learning for Privacy-Preserving Healthcare Analytics</h3>
+                                <p class="text-muted">Nature Digital Medicine • 2020</p>
+                                <p>This research explores federated learning approaches that enable collaborative model training without sharing sensitive patient data. We applied this technique to predict disease progression using distributed medical records.</p>
+                                <p>The system maintained patient privacy while achieving comparable results to centralized approaches, opening new possibilities for multi-institutional medical research.</p>
+                                <a href="#" class="btn btn-outline-primary mt-2">Read Full Paper</a>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#publicationsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#publicationsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div id="projectsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <div class="project-card">
+                                    <img src="assets/corn.jpg" alt="Smart Farm System" class="project-img w-100">
+                                    <div class="card-body p-4">
+                                        <h5>Corn Diseases & Pests Identification System.</h5>
+                                        <p class="text-muted">Deep Learning, Mobile App, Flutter</p>
+                                        <p>A comprehensive solution that enables farmers to identify corn pests and diseases at an early stage, while also providing plant care tips based on the detected issue.</p>
+                                        <div class="mt-3">
+                                            <a href="#" class="btn btn-sm btn-primary">Live Demo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="project-card">
+                                    <img src="assets/queen.jpg" alt="Health AI" class="project-img w-100">
+                                    <div class="card-body p-4">
+                                        <h5>A Detection System for Monitoring the Presence and Absence of the Queen Bee in a Beehive</h5>
+                                        <p class="text-muted">TensorFlow, Librosa, Flutter, Sklearn</p>
+                                        <p>The system allows the beekeepers to detect whether the hive is queenless or queenright using the recorded bee sounds</p>
+                                        <div class="mt-3">
+                                            <a href="#" class="btn btn-sm btn-primary">Live Demo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="project-card">
+                                    <img src="assets/sleep.jpg" alt="Edge AI" class="project-img w-100">
+                                    <div class="card-body p-4">
+                                        <h5>A System for Analyzing Sleep Health: Detecting Apnea and Insomnia.</h5>
+                                        <p class="text-muted">Python, Sklearn, Pandas, Keras, Snowflake</p>
+                                        <p>A system designed to detect the likelihood of sleep disorders based on lifestyle and physiological factors such as BMI, heart rate, gender, and more.</p>
+                                        <div class="mt-3">
+                    
+                                            <a href="#" class="btn btn-sm btn-primary">Live Demo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <div class="project-card">
+                                    <img src="assets/beehive.jpg" alt="Energy Monitor" class="project-img w-100">
+                                    <div class="card-body p-4">
+                                        <h5>A System for Detecting the Health Status of a Beehive.</h5>
+                                        <p class="text-muted">IoT, ESP32, Python, Keras, Sklearn, Flutter</p>
+                                        <p>A system that predicts whether a beehive is healthy or not using real-time sensor data such as temperature and humidity.</p>
+                                        <div class="mt-3">
+                                            <a href="#" class="btn btn-sm btn-primary">Live Demo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="project-card">
+                                    <img src="assets/furniture.jpg" alt= "Industrial AI" class="project-img w-100">
+                                    <div class="card-body p-4">
+                                        <h5>Innovative Web Application for an Online Furniture Store.</h5>
+                                        <p class="text-muted">React, Three.js</p>
+                                        <p>The web application allows customers to view furniture in customizable 2D/3D room layouts before making a purchase.</p>
+                                        <div class="mt-3">
+                                            <a href="#" class="btn btn-sm btn-primary">Live Demo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="project-card">
+                                    <img src="assets/waste.jpg" alt="Traffic System" class="project-img w-100">
+                                    <div class="card-body p-4">
+                                        <h5>Smart Waste Management and Classification System.</h5>
+                                        <p class="text-muted">IOT, Computer Vision, OpenCV, TensorFlow, Flask</p>
+                                        </p>
+                                        <p>A smart waste management and classification system that uses sensors and machine learning to automatically detect, sort, and monitor different types of waste.</p>
+                                        <div class="mt-3">
+                                            <a href="#" class="btn btn-sm btn-primary">Live Demo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#projectsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#projectsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4 p-md-5">
+                            <form id="contactForm" class="contact-form"   action="https://formspree.io/f/mldnenjb" method="POST">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" rows="5" name="message" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 mt-3">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <div class="social-links mb-3">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-medium-m"></i></a>
+                <a href="#"><i class="fab fa-dev"></i></a>
+            </div>
+            <p class="mb-2">© 2025 Nisal Liyanage. All rights reserved.</p>
+            <p class="text-muted">Designed and built with ❤️ using Bootstrap 5</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form validation
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    alert('Thank you for your message! I will get back to you soon.');
+                    contactForm.reset(); // This clears all form fields
+                } else {
+                    alert('Oops! There was a problem submitting your form');
+                }
+            } catch (error) {
+                alert('Oops! There was a problem submitting your form');
+            }
+        });
+                
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
